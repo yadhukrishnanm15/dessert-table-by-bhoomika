@@ -126,6 +126,7 @@ blockquote { margin: 1.5rem 0; max-width: 52rem; color: var(--muted); font-size:
 .qr-panel img { width: 100%; aspect-ratio: 1; }
 .qr-panel div { display: grid; gap: .2rem; margin-top: .75rem; }
 .qr-panel span { color: var(--muted); font-size: .75rem; }
+.menu-link { color: var(--ink); font-size: .75rem; font-weight: 700; overflow-wrap: anywhere; }
 
 .site-footer { padding: 2.5rem max(1rem, calc((100vw - 76rem) / 2)); background: var(--espresso); color: var(--cream); text-align: center; }
 .footer-brand { display: flex; flex-direction: column; font-family: var(--font-display); }
