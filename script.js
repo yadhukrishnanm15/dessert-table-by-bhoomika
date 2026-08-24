@@ -406,7 +406,7 @@ function setupActions() {
     : "WhatsApp number will be added soon.";
 
   const menuUrl = window.location.protocol === "file:"
-    ? "https://yadhukrishnanm15.github.io/dessert-table-by-bhoomika/"
+    ? "https://thedesserttablebybhoomika.com/"
     : window.location.href.split("#")[0];
   document.querySelector("[data-site-qr]").src = `https://api.qrserver.com/v1/create-qr-code/?size=440x440&color=0b2847&bgcolor=fffaf4&data=${encodeURIComponent(menuUrl)}`;
 }
