@@ -19,7 +19,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 9rem; }
-body { margin: 0; background: var(--cream); color: var(--espresso); font-family: var(--font-body); font-size: 1rem; line-height: 1.65; overflow-x: hidden; }
+body { margin: 0; background: var(--cream); color: var(--espresso); font-family: var(--font-body); font-size: 1rem; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 img { display: block; max-width: 100%; }
 button, a { -webkit-tap-highlight-color: transparent; }
 button { font: inherit; }
@@ -54,8 +54,8 @@ a { color: inherit; text-underline-offset: 0.25em; }
 .brand-emblem { position: relative; padding: clamp(2.2rem, 7vw, 4.5rem) 1rem; }
 .brand-emblem::before, .brand-emblem::after { content: ""; position: absolute; inset: 0; border: 3px solid var(--espresso); border-radius: 50%; }
 .brand-emblem::after { inset: .75rem .9rem; border-width: 1px; }
-.brand-emblem h1 { margin: .2rem 0; font: 500 clamp(2.2rem, 9vw, 5.4rem)/1 var(--font-display); letter-spacing: .06em; text-transform: uppercase; }
-.emblem-the { display: block; font: 400 clamp(1rem, 3vw, 2rem)/1 var(--font-display); letter-spacing: .28em; text-transform: uppercase; }
+.brand-emblem h1 { margin: .2rem 0; font: 600 clamp(2.2rem, 9vw, 5.4rem)/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; font-optical-sizing: auto; }
+.emblem-the { display: block; font: 500 clamp(1rem, 3vw, 2rem)/1 var(--font-display); letter-spacing: .24em; text-transform: uppercase; }
 .emblem-by { position: relative; z-index: 1; display: inline-block; padding-inline: 1.5rem; background: var(--cream); color: var(--rose-dark); font-family: var(--font-script); font-size: clamp(1.7rem, 6vw, 3.1rem); line-height: .8; }
 .tagline { margin: 1.6rem auto 0; font-size: .82rem; font-weight: 700; }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 1.5rem; }
@@ -80,6 +80,12 @@ h2 { margin: 0; font: 400 clamp(2.1rem, 7vw, 4.2rem)/1.04 var(--font-display); l
 .product-body { min-width: 0; display: flex; flex-direction: column; padding: .9rem; }
 .product-title { margin: 0; font: 600 1.05rem/1.2 var(--font-display); }
 .product-description { display: -webkit-box; margin: .45rem 0 .7rem; overflow: hidden; color: var(--muted); font-size: .72rem; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.dietary-availability { display: flex; flex-wrap: wrap; gap: .35rem .65rem; margin: 0 0 .75rem; color: #364b31; font-size: .66rem; font-weight: 700; line-height: 1.35; }
+.dietary-availability span { display: inline-flex; align-items: center; gap: .3rem; }
+.dietary-symbol { width: .78rem; height: .78rem; display: inline-block; flex: 0 0 auto; border: 1.5px solid #9b2c2c; }
+.dietary-symbol::after { content: ""; display: block; width: .32rem; height: .32rem; margin: .15rem; border-radius: 50%; background: #9b2c2c; }
+.dietary-symbol.eggless { border-color: #2f6b38; }
+.dietary-symbol.eggless::after { background: #2f6b38; }
 .product-meta { display: flex; justify-content: space-between; align-items: end; gap: .75rem; margin-top: auto; padding-top: .85rem; border-top: 1px solid var(--line); }
 .product-size { font-size: .75rem; color: var(--muted); }
 .product-price { font-family: var(--font-display); font-size: 1rem; font-variant-numeric: tabular-nums; }
@@ -97,6 +103,9 @@ h2 { margin: 0; font: 400 clamp(2.1rem, 7vw, 4.2rem)/1.04 var(--font-display); l
 
 .menu-heading { max-width: 42rem; margin-bottom: 2rem; }
 .menu-heading > p:last-child { color: var(--muted); }
+.menu-heading .dietary-note { max-width: 44rem; display: grid; grid-template-columns: auto 1fr; gap: .1rem .55rem; align-items: center; margin-top: 1.25rem; padding: .85rem 1rem; background: var(--beige); color: var(--espresso); font-size: .82rem; line-height: 1.5; }
+.dietary-note .dietary-symbol { grid-row: 1; }
+.dietary-note strong { margin-right: .2rem; }
 .menu-category { padding-block: 2rem; scroll-margin-top: 9rem; }
 .menu-category + .menu-category { border-top: 1px solid var(--line); }
 .category-heading { display: grid; gap: .5rem; margin-bottom: 1.5rem; }

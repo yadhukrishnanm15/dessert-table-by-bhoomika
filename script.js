@@ -321,11 +321,12 @@ function whatsappUrl(message) {
 
 function productCard(product, featured = false) {
   const displayBadge = product.available ? product.badge : "Currently Unavailable";
+  const supportsEggless = product.category !== "signature-desserts";
   const labels = [
     ...(product.containsAlcohol ? ["Contains alcohol"] : []),
     ...product.dietaryLabels
   ];
-  const message = `Hello Bhoomika, I would like to enquire about the ${product.name}, ${product.size}, priced at ${formatPrice(product.price)}.`;
+  const message = `Hello Bhoomika, I would like to enquire about the ${product.name}, ${product.size}, priced at ${formatPrice(product.price)}.${supportsEggless ? " Please let me know the egg and eggless options." : ""}`;
 
   return `
     <article class="product-card${featured ? " featured-card" : ""}${product.available ? "" : " is-unavailable"}" data-product-id="${product.id}">
@@ -336,6 +337,7 @@ function productCard(product, featured = false) {
       <div class="product-body">
         <h4 class="product-title">${product.name}</h4>
         <p class="product-description">${product.description}</p>
+        ${supportsEggless ? `<div class="dietary-availability" aria-label="Available with egg or eggless"><span><i class="dietary-symbol" aria-hidden="true"></i>Made with egg</span><span><i class="dietary-symbol eggless" aria-hidden="true"></i>Eggless available</span></div>` : ""}
         <div class="product-meta"><span class="product-size">${product.size}</span><strong class="product-price">${formatPrice(product.price)}</strong></div>
         <div class="product-labels">${labels.map(label => `<span class="${label === "Contains alcohol" ? "alcohol" : ""}">${label}</span>`).join("")}</div>
         <a class="button product-action" href="${whatsappUrl(message)}" ${isWhatsAppConfigured() ? 'target="_blank" rel="noopener noreferrer"' : ""} ${product.available ? "" : 'aria-disabled="true" tabindex="-1"'} aria-label="Enquire on WhatsApp about ${product.name}, ${product.size}, ${formatPrice(product.price)}">${product.available ? "Enquire on WhatsApp" : "Currently Unavailable"}</a>
@@ -382,6 +384,21 @@ function setupNavigation() {
   }));
 }
 
+function setupAnchorScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener("click", event => {
+    const target = document.querySelector(link.getAttribute("href"));
+    if (!target) return;
+    event.preventDefault();
+    const headerHeight = document.querySelector("[data-header]").offsetHeight;
+    const categoryNav = document.querySelector("[data-category-nav]");
+    const needsCategoryOffset = target.id === "menu" || target.classList.contains("menu-category");
+    const offset = headerHeight + (needsCategoryOffset ? categoryNav.offsetHeight : 0) + 16;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    history.replaceState(null, "", `#${target.id}`);
+  }));
+}
+
 function setupCategoryTracking() {
   if (!("IntersectionObserver" in window)) return;
   const links = [...document.querySelectorAll("[data-category-nav] a")];
@@ -421,6 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
   validateCatalog();
   renderMenu();
   setupNavigation();
+  setupAnchorScrolling();
   setupCategoryTracking();
   setupActions();
   document.querySelector("[data-current-year]").textContent = String(new Date().getFullYear());
