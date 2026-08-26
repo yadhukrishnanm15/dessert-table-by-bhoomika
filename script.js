@@ -25,7 +25,7 @@ const categories = [
 const products = [
   {
     id: "tiramisu-with-alcohol",
-    name: "Signature Italian Tiramisu with Alcohol",
+    name: "Tiramisu Tub with Alcohol",
     originalName: "Tiramisu Tub with Alcohol",
     category: "signature-desserts",
     description: "A rich, layered Italian-inspired dessert with coffee-soaked notes, velvety cream, cocoa, and a refined touch of alcohol.",
@@ -43,7 +43,7 @@ const products = [
   },
   {
     id: "classic-tiramisu",
-    name: "Signature Italian Tiramisu Classic",
+    name: "Tiramisu Tub without Alcohol",
     originalName: "Tiramisu Tub without Alcohol",
     category: "signature-desserts",
     description: "A comforting, alcohol-free tiramisu layered with coffee notes, velvety cream, and a delicate cocoa finish.",
@@ -360,6 +360,7 @@ function installImageFallbacks() {
     image.addEventListener("error", () => {
       if (image.src.endsWith(FALLBACK_IMAGE)) return;
       image.src = image.dataset.fallback;
+      image.closest(".product-card").classList.add("has-placeholder");
       image.alt = `${image.closest(".product-card").querySelector(".product-title").textContent}. Photo coming soon.`;
     }, { once: true });
   });

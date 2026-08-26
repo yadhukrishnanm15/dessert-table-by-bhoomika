@@ -142,6 +142,8 @@ blockquote { margin: 1.5rem 0; max-width: 52rem; color: var(--muted); font-size:
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .product-card { display: flex; min-height: 0; flex-direction: column; }
   .product-image { aspect-ratio: 1 / 1; }
+  .product-card.has-placeholder .product-image { min-height: 5.5rem; height: 5.5rem; aspect-ratio: auto; }
+  .product-card.has-placeholder .product-image img { object-fit: cover; object-position: center 46%; }
   .product-body { padding: 1.15rem; }
   .product-title { font-size: 1.2rem; }
   .product-description { font-size: .82rem; -webkit-line-clamp: 4; }
