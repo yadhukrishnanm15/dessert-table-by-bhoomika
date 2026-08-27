@@ -73,7 +73,7 @@ h2 { margin: 0; font: 400 clamp(2.1rem, 7vw, 4.2rem)/1.04 var(--font-display); l
 .product-card:hover .product-image img { transform: scale(1.025); }
 .product-card.is-unavailable { opacity: .7; }
 .product-image { position: relative; min-height: 100%; overflow: hidden; background: var(--beige); }
-.product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.product-image img { width: 100%; height: 100%; object-fit: contain; background: var(--beige); transition: transform .45s ease; }
 .badge { position: absolute; z-index: 2; top: .55rem; left: .55rem; max-width: calc(100% - 1.1rem); padding: .3rem .45rem; background: var(--espresso); color: var(--white); font-size: .56rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
 .badge[data-badge="Chef's Recommendation"] { background: var(--gold); color: var(--espresso); }
 .badge[data-badge="Currently Unavailable"] { background: var(--muted); }
@@ -150,7 +150,7 @@ blockquote { margin: 1.5rem 0; max-width: 52rem; color: var(--muted); font-size:
   :root { --page: min(100% - 3rem, 76rem); }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .product-card { display: flex; min-height: 0; flex-direction: column; }
-  .product-image { aspect-ratio: 1 / 1; }
+  .product-image { min-height: 0; flex: 0 0 auto; aspect-ratio: 1 / 1; }
   .product-card.has-placeholder .product-image { min-height: 5.5rem; height: 5.5rem; aspect-ratio: auto; }
   .product-card.has-placeholder .product-image img { object-fit: cover; object-position: center 46%; }
   .product-body { padding: 1.15rem; }

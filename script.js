@@ -4,6 +4,7 @@
 // Use country code and digits only, without spaces or a plus sign.
 const WHATSAPP_NUMBER = "919871116462";
 const FALLBACK_IMAGE = "assets/images/products/product-placeholder.svg";
+const PRODUCT_IMAGE_VERSION = "20260827";
 
 const categories = [
   { id: "signature-desserts", name: "Signature Desserts", note: "Layered, chilled and deeply comforting" },
@@ -332,7 +333,7 @@ function productCard(product, featured = false) {
     <article class="product-card${featured ? " featured-card" : ""}${product.available ? "" : " is-unavailable"}" data-product-id="${product.id}">
       <div class="product-image">
         ${displayBadge ? `<span class="badge" data-badge="${displayBadge}">${displayBadge}</span>` : ""}
-        <img src="${product.image}" data-fallback="${FALLBACK_IMAGE}" alt="${product.imageAlt}" width="600" height="600" loading="lazy">
+        <img src="${product.image}?v=${PRODUCT_IMAGE_VERSION}" data-fallback="${FALLBACK_IMAGE}" alt="${product.imageAlt}" width="800" height="800" loading="lazy">
       </div>
       <div class="product-body">
         <h4 class="product-title">${product.name}</h4>
