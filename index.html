@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260827e">
-  <script src="script.js?v=20260827e" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260827f">
+  <script src="script.js?v=20260827f" defer></script>
 </head>
 <body>
   <!--
@@ -87,6 +87,15 @@
     </nav>
 
     <section class="menu section-shell" id="menu" aria-labelledby="menu-title">
+      <aside class="photo-notice" data-photo-notice aria-labelledby="photo-notice-title">
+        <div class="photo-notice-copy">
+          <strong id="photo-notice-title">A note about our photos</strong>
+          <p>Photos are for reference only. Because every dessert is handmade, your order may vary slightly in appearance. Please confirm custom colors, decoration, and presentation when enquiring.</p>
+        </div>
+        <button class="photo-notice-close" type="button" data-photo-notice-close aria-label="Dismiss photo notice">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </aside>
       <div class="menu-heading">
         <h2 id="menu-title">Our menu</h2>
         <p>Made in small batches. Please enquire to confirm availability and lead time.</p>

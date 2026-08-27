@@ -430,6 +430,27 @@ function setupActions() {
   document.querySelector("[data-site-qr]").src = `https://api.qrserver.com/v1/create-qr-code/?size=440x440&color=0b2847&bgcolor=fffaf4&data=${encodeURIComponent(menuUrl)}`;
 }
 
+function setupPhotoNotice() {
+  const notice = document.querySelector("[data-photo-notice]");
+  const closeButton = document.querySelector("[data-photo-notice-close]");
+  if (!notice || !closeButton) return;
+
+  try {
+    notice.hidden = sessionStorage.getItem("photoNoticeDismissed") === "true";
+  } catch {
+    notice.hidden = false;
+  }
+
+  closeButton.addEventListener("click", () => {
+    notice.hidden = true;
+    try {
+      sessionStorage.setItem("photoNoticeDismissed", "true");
+    } catch {
+      // The notice can still be dismissed when browser storage is unavailable.
+    }
+  });
+}
+
 function validateCatalog() {
   const ids = new Set(products.map(product => product.id));
   if (products.length !== 15 || ids.size !== products.length) console.error("Product catalog validation failed.");
@@ -442,5 +463,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupAnchorScrolling();
   setupCategoryTracking();
   setupActions();
+  setupPhotoNotice();
   document.querySelector("[data-current-year]").textContent = String(new Date().getFullYear());
 });
