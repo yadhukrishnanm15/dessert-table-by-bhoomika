@@ -79,26 +79,27 @@
     <nav class="category-nav" aria-label="Menu categories" data-category-nav>
       <div class="category-nav-inner">
         <span class="category-title">Browse</span>
-        <a href="#signature-tea-cakes">Signature Tea Cakes</a>
         <a href="#signature-desserts">Signature Desserts</a>
         <a href="#cupcake-collection">Cupcake Collection</a>
+        <a href="#celebration-cakes">Celebration Cakes</a>
+        <a href="#signature-tea-cakes">Signature Tea Cakes</a>
       </div>
     </nav>
 
     <section class="menu section-shell" id="menu" aria-labelledby="menu-title">
-      <aside class="order-notice" aria-labelledby="order-notice-title">
-        <div class="order-notice-copy">
-          <strong id="order-notice-title">Freshly baked, just for you</strong>
-          <p>Every order is handcrafted fresh in small batches. Please place yours at least 2 days before your preferred delivery date.</p>
+      <aside class="photo-notice" data-photo-notice aria-labelledby="photo-notice-title">
+        <div class="photo-notice-copy">
+          <strong id="photo-notice-title">A note about our photos</strong>
+          <p>Photos are for reference only. Because every dessert is handmade, your order may vary slightly in appearance. Please confirm custom colors, decoration, and presentation when enquiring.</p>
         </div>
+        <button class="photo-notice-close" type="button" data-photo-notice-close aria-label="Dismiss photo notice">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
       </aside>
       <div class="menu-heading">
         <h2 id="menu-title">Our menu</h2>
         <p>Made in small batches. Please enquire to confirm availability and lead time.</p>
-        <div class="custom-order-note">
-          <p><strong>Made for gifting and special moments</strong><br>We love creating dessert hampers and custom orders. Tell us what you have in mind, and we’ll help make it special.</p>
-          <a class="button button-secondary button-small" href="#contact" data-general-whatsapp data-whatsapp-message="Hello Bhoomika, I would love to enquire about a custom dessert hamper or order. Could you please share the options?">Enquire about a custom order</a>
-        </div>
+        <p class="dietary-note"><span class="dietary-symbol eggless" aria-hidden="true"></span><span><strong>Egg and eggless options available</strong> for our cupcakes, celebration cakes, and tea cakes. Please mention your preference when ordering.</span></p>
       </div>
       <div data-menu-sections></div>
     </section>

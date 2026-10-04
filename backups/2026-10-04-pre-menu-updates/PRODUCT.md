@@ -26,18 +26,17 @@ The Dessert Table by Bhoomika is a boutique artisanal dessert studio centered on
 
 ## Operating Context
 
-Visitors may arrive through a shared mobile link, browse without an account, navigate three menu categories, choose a tiramisu variation, enquire through WhatsApp, share the menu, or print it. Real product photography is available for tiramisu and selected tea cakes and will be added incrementally, so the product must support a polished mix of real photographs and reference imagery without layout changes.
+Visitors may arrive through a shared mobile link, browse without an account, navigate four menu categories, enquire through WhatsApp, share the menu, or print it. Real product photography is available for selected tea cakes and will be added incrementally, so the product must support a polished mix of real photographs and reference imagery without layout changes.
 
 ## Capabilities and Constraints
 
-- Display exactly 12 product cards from one JavaScript data source; model tiramisu and cupcake sizes as selectable variants within their product cards.
+- Display exactly 17 supplied products from one JavaScript data source.
 - Generate featured and category views from the same product data.
 - Support missing-image fallbacks without broken-image icons or layout shift.
 - Generate product-specific WhatsApp enquiry messages using a clearly marked number placeholder.
 - Provide accessible mobile navigation, sticky category navigation, a scannable menu QR code, and direct WhatsApp enquiries.
 - Include editable ordering, service-area, social, email, lead-time, delivery, pickup, custom-order, and payment placeholders.
-- Clearly mark all non-tiramisu products as eggless, identify tiramisu alcohol options, and include availability, allergen, and handmade-order lead-time disclosures.
-- Explain that fresh orders need at least two days for delivery and offer a WhatsApp path for custom orders and dessert hampers.
+- Include supplied allergen, alcohol, availability, and handmade-product disclosures without unconfirmed dietary claims.
 - Preserve fast loading, keyboard support, reduced-motion support, responsive layouts from approximately 320px to 1440px, and GitHub Pages compatibility.
 - Do not add a CRM, payment gateway, inventory system, admin portal, login, checkout, analytics, tracking, or fake form submission.
 

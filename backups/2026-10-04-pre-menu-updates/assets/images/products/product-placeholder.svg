@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="title description">
+  <title id="title">Dessert photo coming soon</title>
+  <desc id="description">A branded placeholder used until a real square product photograph is added</desc>
+  <rect width="600" height="600" fill="#F3E7D9"/>
+  <circle cx="300" cy="262" r="142" fill="#FFF9F3" stroke="#D9B26F" stroke-width="3"/>
+  <path d="M226 324c16-91 39-130 74-130s58 39 74 130z" fill="#C87E8A" opacity=".76"/>
+  <path d="M250 257h100" stroke="#FFF9F3" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="300" cy="183" r="14" fill="#9C5260"/>
+  <text x="300" y="452" fill="#3B2B24" font-family="Georgia,serif" font-size="30" text-anchor="middle">The Dessert Table</text>
+  <text x="300" y="492" fill="#9C5260" font-family="Arial,sans-serif" font-size="16" letter-spacing="3" text-anchor="middle">PHOTO COMING SOON</text>
+</svg>

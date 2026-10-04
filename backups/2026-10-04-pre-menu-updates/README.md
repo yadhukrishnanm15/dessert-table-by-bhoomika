@@ -1,6 +1,6 @@
 # The Dessert Table by Bhoomika
 
-A mobile-first, static digital bakery menu that works by opening `index.html` directly and can be published through GitHub Pages. It includes 12 product cards across three categories, selectable tiramisu and cupcake options, automatic image fallbacks, WhatsApp enquiries, sharing, and a print-friendly A4 menu.
+A mobile-first, static digital bakery menu that works by opening `index.html` directly and can be published through GitHub Pages. It includes 17 products, category browsing, automatic image fallbacks, WhatsApp enquiries, sharing, and a print-friendly A4 menu.
 
 ## Project files
 
@@ -67,7 +67,6 @@ All displayed product information lives in the `products` array inside `script.j
 - **Mark unavailable:** Set `available: false`. The screen displays an unavailable state, and printing hides the item.
 - **Feature a product:** Set `featured: true`. Featured items use the same data as the full menu.
 - **Reorder products:** Change `sortOrder`; lower values appear first within the category.
-- **Offer product choices:** Add a `variants` array with an `id`, `label`, and `price` to show accessible selectable options that update the price, size, image, and WhatsApp enquiry.
 
 A commented future-product example is included below the live array.
 
@@ -82,15 +81,19 @@ A commented future-product example is included below the live array.
 Place each photograph in `assets/images/products/` using the exact filename:
 
 ```text
-tiramisu-rectangular-tub.jpg
+tiramisu-with-alcohol.jpg
+classic-tiramisu.jpg
 blueberry-cupcakes.jpg
 mini-blueberry-cupcakes.jpg
 vanilla-cupcakes.jpg
 mini-vanilla-cupcakes.jpg
+lemon-blueberry-cake-500g.jpg
+lemon-blueberry-cake-1kg.jpg
 coffee-walnut-tea-cake.jpg
 banana-tea-cake.jpg
 orange-tea-cake.jpg
 chocolate-tea-cake.jpg
+blueberry-tea-cake.jpg
 motichoor-tea-cake.jpg
 gulab-jamun-tea-cake.jpg
 marble-tea-cake.jpg

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">The Dessert Table by Bhoomika social sharing image</title>
+  <desc id="description">Branded social card placeholder</desc>
+  <rect width="1200" height="630" fill="#F3E7D9"/>
+  <rect x="48" y="48" width="1104" height="534" rx="16" fill="#FFF9F3" stroke="#D9B26F" stroke-width="3"/>
+  <circle cx="600" cy="205" r="72" fill="#C87E8A"/>
+  <text x="600" y="234" fill="#FFF" font-family="Georgia,serif" font-size="82" text-anchor="middle">B</text>
+  <text x="600" y="355" fill="#3B2B24" font-family="Georgia,serif" font-size="62" text-anchor="middle">The Dessert Table</text>
+  <text x="600" y="405" fill="#9C5260" font-family="Arial,sans-serif" font-size="24" letter-spacing="5" text-anchor="middle">BY BHOOMIKA</text>
+  <text x="600" y="490" fill="#3B2B24" font-family="Arial,sans-serif" font-size="24" text-anchor="middle">Crafted with Love. Shared with Joy. Remembered Forever.</text>
+</svg>

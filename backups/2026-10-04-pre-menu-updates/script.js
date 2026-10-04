@@ -4,12 +4,13 @@
 // Use country code and digits only, without spaces or a plus sign.
 const WHATSAPP_NUMBER = "919871116462";
 const FALLBACK_IMAGE = "assets/images/products/product-placeholder.svg";
-const PRODUCT_IMAGE_VERSION = "20261004d";
+const PRODUCT_IMAGE_VERSION = "20261004b";
 
 const categories = [
-  { id: "signature-tea-cakes", name: "Signature Tea Cakes", note: "Slow afternoons and thoughtful gifts" },
   { id: "signature-desserts", name: "Signature Desserts", note: "Layered, chilled and deeply comforting" },
-  { id: "cupcake-collection", name: "Cupcake Collection", note: "Made for sharing, gifting and dessert tables" }
+  { id: "cupcake-collection", name: "Cupcake Collection", note: "Made for sharing, gifting and dessert tables" },
+  { id: "celebration-cakes", name: "Celebration Cakes", note: "A centerpiece for memorable occasions" },
+  { id: "signature-tea-cakes", name: "Signature Tea Cakes", note: "Slow afternoons and thoughtful gifts" }
 ];
 
 // PRODUCT EDITING GUIDE
@@ -24,26 +25,40 @@ const categories = [
 // 9. Reorder: change sortOrder; lower numbers appear first.
 const products = [
   {
-    id: "tiramisu-tub",
-    name: "Classic Tiramisu Tub",
-    originalName: "Classic Tiramisu Tub",
+    id: "tiramisu-with-alcohol",
+    name: "Tiramisu Tub with Alcohol",
+    originalName: "Tiramisu Tub with Alcohol",
     category: "signature-desserts",
-    description: "Coffee-soaked layers and velvety cream finished with a delicate cocoa dusting. Choose your preferred version below.",
-    price: 350,
-    size: "200 g",
-    image: "assets/images/products/tiramisu-rectangular-tub.jpg",
-    imageAlt: "Layered tiramisu topped with cocoa, served in a dessert tub",
-    variants: [
-      { id: "without-alcohol", label: "Without alcohol", price: 350 },
-      { id: "with-alcohol", label: "With alcohol", price: 375 }
-    ],
+    description: "A rich, layered Italian-inspired dessert with coffee-soaked notes, velvety cream, cocoa, and a refined touch of alcohol.",
+    price: 375,
+    size: "200g",
+    image: "assets/images/products/tiramisu-with-alcohol.jpg",
+    imageAlt: "Signature Italian tiramisu with alcohol in a dessert tub",
     badge: "Customer Favorite",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
-    containsAlcohol: false,
+    containsAlcohol: true,
     featured: true,
     sortOrder: 1
+  },
+  {
+    id: "classic-tiramisu",
+    name: "Tiramisu Tub without Alcohol",
+    originalName: "Tiramisu Tub without Alcohol",
+    category: "signature-desserts",
+    description: "A comforting, alcohol-free tiramisu layered with coffee notes, velvety cream, and a delicate cocoa finish.",
+    price: 350,
+    size: "200g",
+    image: "assets/images/products/classic-tiramisu.jpg",
+    imageAlt: "Classic alcohol-free Italian tiramisu in a dessert tub",
+    badge: "Customer Favorite",
+    available: true,
+    dietaryLabels: ["Alcohol-free recipe", "Please ask about dietary preferences"],
+    allergenNote: "Please share allergies before ordering.",
+    containsAlcohol: false,
+    featured: true,
+    sortOrder: 2
   },
   {
     id: "blueberry-cupcakes",
@@ -52,13 +67,9 @@ const products = [
     category: "cupcake-collection",
     description: "Soft, elegant cupcakes with bright blueberry notes and a smooth, celebration-ready finish.",
     price: 900,
-    size: "6 regular cupcakes",
+    size: "Pack of 6",
     image: "assets/images/products/blueberry-cupcakes.jpg",
     imageAlt: "Six Wild Blueberry Velvet Cupcakes",
-    variants: [
-      { id: "regular", label: "Regular · 6 cupcakes", size: "6 regular cupcakes", price: 900, image: "assets/images/products/blueberry-cupcakes.jpg", imageAlt: "Six Wild Blueberry Velvet regular cupcakes" },
-      { id: "mini", label: "Mini · 6 cupcakes", size: "6 mini cupcakes", price: 600, image: "assets/images/products/mini-blueberry-cupcakes.jpg", imageAlt: "Six mini Wild Blueberry Velvet cupcakes" }
-    ],
     badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
@@ -68,19 +79,33 @@ const products = [
     sortOrder: 1
   },
   {
+    id: "mini-blueberry-cupcakes",
+    name: "Wild Blueberry Velvet Mini Cupcakes",
+    originalName: "Wild Blueberry Velvet Mini Cupcakes",
+    category: "cupcake-collection",
+    description: "Petite blueberry cupcakes created for gifting, sharing, dessert tables, and smaller celebrations.",
+    price: 600,
+    size: "Pack of 6",
+    image: "assets/images/products/mini-blueberry-cupcakes.jpg",
+    imageAlt: "Six Wild Blueberry Velvet Mini Cupcakes",
+    badge: "",
+    available: true,
+    dietaryLabels: ["Please ask about dietary preferences"],
+    allergenNote: "Please share allergies before ordering.",
+    containsAlcohol: false,
+    featured: false,
+    sortOrder: 2
+  },
+  {
     id: "vanilla-cupcakes",
     name: "Classic Vanilla Bean Cupcakes",
     originalName: "Classic Vanilla Bean Cupcakes",
     category: "cupcake-collection",
     description: "Delicate vanilla cupcakes with a timeless flavor and an elegant finish for every occasion.",
     price: 700,
-    size: "6 regular cupcakes",
+    size: "Pack of 6",
     image: "assets/images/products/vanilla-cupcakes.jpg",
     imageAlt: "Six Classic Vanilla Bean Cupcakes",
-    variants: [
-      { id: "regular", label: "Regular · 6 cupcakes", size: "6 regular cupcakes", price: 700, image: "assets/images/products/vanilla-cupcakes.jpg", imageAlt: "Six Classic Vanilla Bean regular cupcakes" },
-      { id: "mini", label: "Mini · 6 cupcakes", size: "6 mini cupcakes", price: 500, image: "assets/images/products/mini-vanilla-cupcakes.jpg", imageAlt: "Six mini Classic Vanilla Bean cupcakes" }
-    ],
     badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
@@ -90,20 +115,52 @@ const products = [
     sortOrder: 3
   },
   {
-    id: "chocolate-cupcakes",
-    name: "Chocolate Fudge Cupcakes",
-    originalName: "Chocolate Fudge Cupcakes",
+    id: "mini-vanilla-cupcakes",
+    name: "Classic Vanilla Bean Mini Cupcakes",
+    originalName: "Classic Vanilla Bean Mini Cupcakes",
     category: "cupcake-collection",
-    description: "Rich chocolate cupcakes for a classic, cocoa-filled treat.",
-    price: 800,
-    size: "6 regular cupcakes",
-    image: "assets/images/products/product-placeholder.svg",
-    imageAlt: "Illustrated cupcake placeholder; chocolate cupcake photo coming soon",
-    variants: [
-      { id: "regular", label: "Regular · 6 cupcakes", size: "6 regular cupcakes", price: 800, image: "assets/images/products/product-placeholder.svg", imageAlt: "Illustrated cupcake placeholder; chocolate cupcake photo coming soon" },
-      { id: "mini", label: "Mini · 6 cupcakes", size: "6 mini cupcakes", price: 650, image: "assets/images/products/product-placeholder.svg", imageAlt: "Illustrated cupcake placeholder; chocolate cupcake photo coming soon" }
-    ],
+    description: "Small, charming vanilla cupcakes that are perfect for gatherings, gifting, and dessert tables.",
+    price: 500,
+    size: "Pack of 6",
+    image: "assets/images/products/mini-vanilla-cupcakes.jpg",
+    imageAlt: "Six Classic Vanilla Bean Mini Cupcakes",
     badge: "",
+    available: true,
+    dietaryLabels: ["Please ask about dietary preferences"],
+    allergenNote: "Please share allergies before ordering.",
+    containsAlcohol: false,
+    featured: false,
+    sortOrder: 4
+  },
+  {
+    id: "lemon-blueberry-cake-500g",
+    name: "Lemon Blueberry Celebration Cake",
+    originalName: "Lemon Blueberry Celebration Cake",
+    category: "celebration-cakes",
+    description: "A bright and elegant cake pairing refreshing lemon with sweet blueberry notes.",
+    price: 1100,
+    size: "500g",
+    image: "assets/images/products/lemon-blueberry-cake-500g.jpg",
+    imageAlt: "500g Lemon Blueberry Celebration Cake",
+    badge: "Chef's Recommendation",
+    available: true,
+    dietaryLabels: ["Please ask about dietary preferences"],
+    allergenNote: "Please share allergies before ordering.",
+    containsAlcohol: false,
+    featured: false,
+    sortOrder: 1
+  },
+  {
+    id: "lemon-blueberry-cake-1kg",
+    name: "Lemon Blueberry Celebration Cake",
+    originalName: "Lemon Blueberry Celebration Cake",
+    category: "celebration-cakes",
+    description: "A larger celebration cake combining refreshing citrus and blueberry flavors for memorable occasions.",
+    price: 2200,
+    size: "1kg",
+    image: "assets/images/products/lemon-blueberry-cake-1kg.jpg",
+    imageAlt: "1kg Lemon Blueberry Celebration Cake",
+    badge: "Chef's Recommendation",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
@@ -117,8 +174,8 @@ const products = [
     originalName: "Coffee Walnut Indulgence Tea Cake",
     category: "signature-tea-cakes",
     description: "A comforting coffee-infused tea cake balanced with the rich texture and flavor of walnuts.",
-    price: 600,
-    size: "500 g",
+    price: 700,
+    size: "1kg",
     image: "assets/images/products/coffee-walnut-tea-cake.jpg",
     imageAlt: "Coffee Walnut Indulgence Tea Cake",
     badge: "Customer Favorite",
@@ -130,16 +187,16 @@ const products = [
     sortOrder: 1
   },
   {
-    id: "chocolate-chip-banana-tea-cake",
-    name: "Chocolate Chip Banana Tea Cake",
-    originalName: "Chocolate Chip Banana Tea Cake",
+    id: "banana-tea-cake",
+    name: "Caramelized Banana Tea Cake",
+    originalName: "Caramelized Banana Tea Cake",
     category: "signature-tea-cakes",
-    description: "A moist banana loaf studded with chocolate chips for a comforting, feel-good favourite.",
-    price: 750,
-    size: "500 g",
+    description: "A moist and comforting banana tea cake with warm, naturally sweet notes.",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/banana-tea-cake.jpg",
-    imageAlt: "Chocolate Chip Banana Tea Cake",
-    badge: "Customer Favorite",
+    imageAlt: "Caramelized Banana Tea Cake",
+    badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
@@ -148,16 +205,16 @@ const products = [
     sortOrder: 2
   },
   {
-    id: "lemon-loaf-tea-cake",
-    name: "Lemon Loaf Tea Cake",
-    originalName: "Lemon Loaf Tea Cake",
+    id: "orange-tea-cake",
+    name: "Citrus Orange Tea Cake",
+    originalName: "Citrus Orange Tea Cake",
     category: "signature-tea-cakes",
-    description: "A tender loaf with fresh lemon notes and a bright, gently zesty finish.",
-    price: 600,
-    size: "500 g",
+    description: "A fragrant tea cake with bright citrus notes and a soft, refined crumb.",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/orange-tea-cake.jpg",
-    imageAlt: "Lemon Loaf Tea Cake",
-    badge: "",
+    imageAlt: "Citrus Orange Tea Cake",
+    badge: "Customer Favorite",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
@@ -167,14 +224,14 @@ const products = [
   },
   {
     id: "chocolate-tea-cake",
-    name: "Ruby Velvet Chocolate Tea Cake",
-    originalName: "Ruby Velvet Chocolate Tea Cake",
+    name: "Belgian Chocolate Tea Cake",
+    originalName: "Belgian Chocolate Tea Cake",
     category: "signature-tea-cakes",
-    description: "A tender chocolate tea cake with ruby chocolate callets and their delicate berry-like notes.",
-    price: 600,
-    size: "400 g",
+    description: "A rich chocolate tea cake created for deep cocoa flavor and comforting indulgence.",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/chocolate-tea-cake.jpg",
-    imageAlt: "Ruby Velvet Chocolate Tea Cake",
+    imageAlt: "Belgian Chocolate Tea Cake",
     badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
@@ -184,16 +241,34 @@ const products = [
     sortOrder: 4
   },
   {
+    id: "blueberry-tea-cake",
+    name: "Blueberry Crumble Tea Cake",
+    originalName: "Blueberry Crumble Tea Cake",
+    category: "signature-tea-cakes",
+    description: "A soft blueberry tea cake with fruity notes and a satisfying crumble-inspired finish.",
+    price: 1200,
+    size: "1kg",
+    image: "assets/images/products/blueberry-tea-cake.jpg",
+    imageAlt: "Blueberry Crumble Tea Cake",
+    badge: "",
+    available: true,
+    dietaryLabels: ["Please ask about dietary preferences"],
+    allergenNote: "Please share allergies before ordering.",
+    containsAlcohol: false,
+    featured: false,
+    sortOrder: 5
+  },
+  {
     id: "motichoor-tea-cake",
     name: "Motichoor Celebration Tea Cake",
     originalName: "Motichoor Celebration Tea Cake",
     category: "signature-tea-cakes",
     description: "A festive fusion tea cake inspired by the familiar flavor and warmth of motichoor ladoo.",
-    price: 800,
-    size: "500 g",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/motichoor-tea-cake.jpg",
     imageAlt: "Motichoor Celebration Tea Cake",
-    badge: "Chef's Special",
+    badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
@@ -207,8 +282,8 @@ const products = [
     originalName: "Gulab Jamun Fusion Tea Cake",
     category: "signature-tea-cakes",
     description: "A modern fusion tea cake inspired by the rich and comforting flavors of gulab jamun.",
-    price: 500,
-    size: "300 g",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/gulab-jamun-tea-cake.jpg",
     imageAlt: "Gulab Jamun Fusion Tea Cake",
     badge: "",
@@ -225,11 +300,11 @@ const products = [
     originalName: "Marble Swirl Tea Cake",
     category: "signature-tea-cakes",
     description: "A soft tea cake with a classic swirl of chocolate through its golden crumb.",
-    price: 650,
-    size: "500 g",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/marble-tea-cake.jpg",
     imageAlt: "Marble Swirl Tea Cake with a golden crumb and chocolate marbling",
-    badge: "Must Try",
+    badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
@@ -238,16 +313,16 @@ const products = [
     sortOrder: 8
   },
   {
-    id: "chocolate-chip-butter-tea-cake",
-    name: "Chocolate Chip Butter Tea Cake",
-    originalName: "Chocolate Chip Butter Tea Cake",
+    id: "chocolate-chip-tea-cake",
+    name: "Chocolate Chip Tea Cake",
+    originalName: "Chocolate Chip Tea Cake",
     category: "signature-tea-cakes",
-    description: "A buttery, golden tea cake generously dotted with chocolate chips.",
-    price: 650,
-    size: "500 g",
+    description: "A golden tea cake dotted with chocolate chips for a comforting chocolate finish.",
+    price: 1200,
+    size: "1kg",
     image: "assets/images/products/chocolate-chip-tea-cake.jpg",
     imageAlt: "Golden Chocolate Chip Tea Cake dotted with chocolate chips",
-    badge: "Must Try",
+    badge: "",
     available: true,
     dietaryLabels: ["Please ask about dietary preferences"],
     allergenNote: "Please share allergies before ordering.",
@@ -284,21 +359,11 @@ function whatsappUrl(message) {
 function productCard(product, featured = false) {
   const displayBadge = product.available ? product.badge : "Currently Unavailable";
   const supportsEggless = product.category !== "signature-desserts";
-  const selectedVariant = product.variants?.[0];
-  const displayPrice = selectedVariant?.price ?? product.price;
-  const displaySize = selectedVariant?.size ?? product.size;
   const labels = [
     ...(product.containsAlcohol ? ["Contains alcohol"] : []),
     ...product.dietaryLabels
   ];
-  const message = productEnquiryMessage(product, selectedVariant);
-  const variantControls = product.variants?.length
-    ? `<fieldset class="product-variants"><legend>${product.category === "cupcake-collection" ? "Choose a size" : "Choose an option"}</legend><div class="variant-options">${product.variants.map((variant, index) => `
-        <label class="variant-choice">
-          <input type="radio" name="variant-${product.id}" value="${variant.id}" data-product-variant="${product.id}" ${index === 0 ? "checked" : ""}>
-          <span>${variant.label}</span>
-        </label>`).join("")}</div></fieldset>`
-    : "";
+  const message = `Hello Bhoomika, I would like to enquire about the ${product.name}, ${product.size}, priced at ${formatPrice(product.price)}.${supportsEggless ? " Please let me know the egg and eggless options." : ""}`;
 
   return `
     <article class="product-card${featured ? " featured-card" : ""}${product.available ? "" : " is-unavailable"}" data-product-id="${product.id}">
@@ -309,20 +374,12 @@ function productCard(product, featured = false) {
       <div class="product-body">
         <h4 class="product-title">${product.name}</h4>
         <p class="product-description">${product.description}</p>
-        ${variantControls}
-        ${supportsEggless ? `<div class="dietary-availability" aria-label="Eggless"><span><i class="dietary-symbol eggless" aria-hidden="true"></i>Eggless</span></div>` : ""}
-        <div class="product-meta"><span class="product-size" data-product-size>${displaySize}</span><strong class="product-price" data-product-price aria-live="polite" aria-atomic="true">${formatPrice(displayPrice)}</strong></div>
+        ${supportsEggless ? `<div class="dietary-availability" aria-label="Available with egg or eggless"><span><i class="dietary-symbol" aria-hidden="true"></i>Made with egg</span><span><i class="dietary-symbol eggless" aria-hidden="true"></i>Eggless available</span></div>` : ""}
+        <div class="product-meta"><span class="product-size">${product.size}</span><strong class="product-price">${formatPrice(product.price)}</strong></div>
         <div class="product-labels">${labels.map(label => `<span class="${label === "Contains alcohol" ? "alcohol" : ""}">${label}</span>`).join("")}</div>
-        <a class="button product-action" data-product-enquiry href="${whatsappUrl(message)}" ${isWhatsAppConfigured() ? 'target="_blank" rel="noopener noreferrer"' : ""} ${product.available ? "" : 'aria-disabled="true" tabindex="-1"'} aria-label="Enquire on WhatsApp about ${product.name}, ${displaySize}, ${formatPrice(displayPrice)}">${product.available ? "Enquire on WhatsApp" : "Currently Unavailable"}</a>
+        <a class="button product-action" href="${whatsappUrl(message)}" ${isWhatsAppConfigured() ? 'target="_blank" rel="noopener noreferrer"' : ""} ${product.available ? "" : 'aria-disabled="true" tabindex="-1"'} aria-label="Enquire on WhatsApp about ${product.name}, ${product.size}, ${formatPrice(product.price)}">${product.available ? "Enquire on WhatsApp" : "Currently Unavailable"}</a>
       </div>
     </article>`;
-}
-
-function productEnquiryMessage(product, variant) {
-  const option = variant ? ` (${variant.label.toLowerCase()})` : "";
-  const size = variant?.size ?? product.size;
-  const supportsEggless = product.category !== "signature-desserts";
-  return `Hello Bhoomika, I would like to enquire about the ${product.name}${option}, ${size}, priced at ${formatPrice(variant?.price ?? product.price)}.${supportsEggless ? " Please confirm this is eggless." : ""}`;
 }
 
 function renderMenu() {
@@ -344,33 +401,7 @@ function installImageFallbacks() {
       image.src = image.dataset.fallback;
       image.closest(".product-card").classList.add("has-placeholder");
       image.alt = `${image.closest(".product-card").querySelector(".product-title").textContent}. Photo coming soon.`;
-    });
-  });
-}
-
-function setupProductVariants() {
-  document.querySelectorAll("[data-product-variant]").forEach(control => {
-    control.addEventListener("change", event => {
-      const selectedControl = event.currentTarget;
-      const card = selectedControl.closest(".product-card");
-      const product = products.find(item => item.id === card.dataset.productId);
-      const variant = product.variants.find(item => item.id === selectedControl.value);
-      const price = card.querySelector("[data-product-price]");
-      const size = card.querySelector("[data-product-size]");
-      const enquiry = card.querySelector("[data-product-enquiry]");
-      const message = productEnquiryMessage(product, variant);
-
-      price.textContent = formatPrice(variant.price);
-      size.textContent = variant.size ?? product.size;
-      enquiry.href = whatsappUrl(message);
-      enquiry.setAttribute("aria-label", `Enquire on WhatsApp about ${product.name}, ${variant.label}, ${variant.size ?? product.size}, ${formatPrice(variant.price)}`);
-      if (variant.image) {
-        const image = card.querySelector(".product-image img");
-        image.src = `${variant.image}?v=${PRODUCT_IMAGE_VERSION}`;
-        image.alt = variant.imageAlt ?? product.imageAlt;
-        card.classList.remove("has-placeholder");
-      }
-    });
+    }, { once: true });
   });
 }
 
@@ -419,7 +450,7 @@ function setupCategoryTracking() {
 function setupActions() {
   const generalMessage = "Hello Bhoomika, I would like to enquire about your dessert menu.";
   document.querySelectorAll("[data-general-whatsapp]").forEach(link => {
-    link.href = whatsappUrl(link.dataset.whatsappMessage || generalMessage);
+    link.href = whatsappUrl(generalMessage);
     if (isWhatsAppConfigured()) {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
@@ -435,18 +466,39 @@ function setupActions() {
   document.querySelector("[data-site-qr]").src = `https://api.qrserver.com/v1/create-qr-code/?size=440x440&color=0b2847&bgcolor=fffaf4&data=${encodeURIComponent(menuUrl)}`;
 }
 
+function setupPhotoNotice() {
+  const notice = document.querySelector("[data-photo-notice]");
+  const closeButton = document.querySelector("[data-photo-notice-close]");
+  if (!notice || !closeButton) return;
+
+  try {
+    notice.hidden = sessionStorage.getItem("photoNoticeDismissed") === "true";
+  } catch {
+    notice.hidden = false;
+  }
+
+  closeButton.addEventListener("click", () => {
+    notice.hidden = true;
+    try {
+      sessionStorage.setItem("photoNoticeDismissed", "true");
+    } catch {
+      // The notice can still be dismissed when browser storage is unavailable.
+    }
+  });
+}
+
 function validateCatalog() {
   const ids = new Set(products.map(product => product.id));
-  if (products.length !== 12 || ids.size !== products.length) console.error("Product catalog validation failed.");
+  if (products.length !== 17 || ids.size !== products.length) console.error("Product catalog validation failed.");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   validateCatalog();
   renderMenu();
-  setupProductVariants();
   setupNavigation();
   setupAnchorScrolling();
   setupCategoryTracking();
   setupActions();
+  setupPhotoNotice();
   document.querySelector("[data-current-year]").textContent = String(new Date().getFullYear());
 });

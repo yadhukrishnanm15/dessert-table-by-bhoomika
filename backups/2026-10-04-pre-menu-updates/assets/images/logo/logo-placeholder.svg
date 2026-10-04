@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" role="img" aria-labelledby="title description">
+  <title id="title">The Dessert Table by Bhoomika logo placeholder</title>
+  <desc id="description">Text logo placeholder in espresso and dusty rose</desc>
+  <rect width="600" height="220" fill="#FFF9F3"/>
+  <text x="300" y="100" fill="#3B2B24" font-family="Georgia,serif" font-size="50" text-anchor="middle">The Dessert Table</text>
+  <line x1="185" x2="415" y1="126" y2="126" stroke="#D9B26F"/>
+  <text x="300" y="165" fill="#9C5260" font-family="Arial,sans-serif" font-size="20" letter-spacing="4" text-anchor="middle">BY BHOOMIKA</text>
+</svg>
