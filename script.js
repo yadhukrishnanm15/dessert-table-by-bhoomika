@@ -4,7 +4,7 @@
 // Use country code and digits only, without spaces or a plus sign.
 const WHATSAPP_NUMBER = "919871116462";
 const FALLBACK_IMAGE = "assets/images/products/product-placeholder.svg";
-const PRODUCT_IMAGE_VERSION = "20261004d";
+const PRODUCT_IMAGE_VERSION = "20261005e";
 
 const categories = [
   { id: "signature-tea-cakes", name: "Signature Tea Cakes", note: "Slow afternoons and thoughtful gifts" },
@@ -91,17 +91,17 @@ const products = [
   },
   {
     id: "chocolate-cupcakes",
-    name: "Chocolate Fudge Cupcakes",
-    originalName: "Chocolate Fudge Cupcakes",
+    name: "Chocolate Cupcakes",
+    originalName: "Chocolate Cupcakes",
     category: "cupcake-collection",
     description: "Rich chocolate cupcakes for a classic, cocoa-filled treat.",
     price: 800,
     size: "6 regular cupcakes",
-    image: "assets/images/products/product-placeholder.svg",
-    imageAlt: "Illustrated cupcake placeholder; chocolate cupcake photo coming soon",
+    image: "assets/images/products/chocolate-cupcakes-regular.png",
+    imageAlt: "A regular chocolate cupcake topped with a tall swirl of chocolate frosting and sprinkles",
     variants: [
-      { id: "regular", label: "Regular · 6 cupcakes", size: "6 regular cupcakes", price: 800, image: "assets/images/products/product-placeholder.svg", imageAlt: "Illustrated cupcake placeholder; chocolate cupcake photo coming soon" },
-      { id: "mini", label: "Mini · 6 cupcakes", size: "6 mini cupcakes", price: 650, image: "assets/images/products/product-placeholder.svg", imageAlt: "Illustrated cupcake placeholder; chocolate cupcake photo coming soon" }
+      { id: "regular", label: "Regular · 6 cupcakes", size: "6 regular cupcakes", price: 800, image: "assets/images/products/chocolate-cupcakes-regular.png", imageAlt: "A regular chocolate cupcake topped with a tall swirl of chocolate frosting and sprinkles" },
+      { id: "mini", label: "Mini · 6 cupcakes", size: "6 mini cupcakes", price: 650, image: "assets/images/products/mini-chocolate-cupcakes.png", imageAlt: "A group of mini chocolate cupcakes topped with chocolate frosting and sprinkles" }
     ],
     badge: "",
     available: true,
