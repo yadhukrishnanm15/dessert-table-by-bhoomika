@@ -17,11 +17,10 @@
   <meta name="twitter:description" content="Handcrafted desserts, thoughtfully made for meaningful moments.">
   <meta name="twitter:image" content="assets/images/social/social-share-placeholder.svg">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261005a">
-  <script src="script.js?v=20261005f" defer></script>
+  <link rel="preload" href="assets/fonts/bodoni-moda-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=20261018c">
+  <script src="script.js?v=20261018c" defer></script>
 </head>
 <body>
   <!--
@@ -67,6 +66,26 @@
         </div>
       </div>
     </section>
+
+    <div class="brand-ticker" role="region" aria-label="Our baking philosophy">
+      <div class="ticker-window">
+        <div class="ticker-track" data-ticker-track>
+          <ul class="ticker-sequence">
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14l-2 9H7Z M5 12a3 3 0 0 1 1-5 4 4 0 0 1 8-2 3 3 0 0 1 4 2 3 3 0 0 1 1 5 M10 16v2 M14 16v2"/></svg>Eggless bakes</li>
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 13h16v8H4Z M3 13h18 M8 9c-3-2 2-3 0-6 M12 9c-3-2 2-3 0-6 M16 9c-3-2 2-3 0-6 M8 17h8"/></svg>Freshly baked</li>
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m4 20 6-6 M10 14c-5-5 3-12 8-10 2 5-5 13-8 10Z M10 14c-1-4 4-9 8-10 M10 14c4 1 9-4 8-10"/></svg>Premium ingredients</li>
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4 M17 3v4 M3 10h18 m5 5 3 3 5-5"/></svg>Baked to order</li>
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Delhi NCR</li>
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 5c-3-3-7-1-8 2-1-3-5-5-8-2-5 5 3 11 8 15 5-4 13-10 8-15Z"/></svg>Crafted with love</li>
+            <li><svg class="ticker-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>Pre-order 2 days ahead</li>
+          </ul>
+        </div>
+      </div>
+      <button class="ticker-toggle" type="button" aria-label="Pause brand story movement" aria-pressed="false" data-ticker-toggle hidden>
+        <svg class="ticker-pause" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14M16 5v14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <svg class="ticker-play" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m9 5 10 7-10 7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
 
     <section class="brand-intro section-shell" id="about" aria-labelledby="intro-title">
       <h2 id="intro-title">Thoughtfully made for the moments and people that matter most.</h2>
@@ -135,6 +154,18 @@
       </ul>
     </section>
 
+    <section class="testimonials section-shell" aria-labelledby="testimonials-title" hidden data-testimonials>
+      <div class="testimonials-intro">
+        <p class="section-label">Kind words</p>
+        <h2 id="testimonials-title">From their tables</h2>
+        <p>A few notes from the people we've baked for.</p>
+      </div>
+      <div class="testimonial-grid" data-testimonial-grid></div>
+      <div class="testimonials-action">
+        <a class="button button-secondary" href="https://wa.me/919871116462" data-general-whatsapp>Order on WhatsApp</a>
+      </div>
+    </section>
+
     <section class="contact" id="contact" aria-labelledby="contact-title">
       <div class="contact-inner">
         <div class="contact-copy">
@@ -144,7 +175,7 @@
           <p class="whatsapp-number" data-whatsapp-display></p>
         </div>
         <div class="qr-panel">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=440x440&amp;color=0b2847&amp;bgcolor=fffaf4&amp;data=https%3A%2F%2Fthedesserttablebybhoomika.com%2F" data-site-qr alt="QR code to open The Dessert Table menu on a phone" width="220" height="220">
+          <img src="assets/icons/menu-qr.png" alt="QR code to open The Dessert Table menu on a phone" width="220" height="220" loading="lazy" decoding="async">
           <div><strong>Scan to open the menu</strong><span>Point your phone camera at the code.</span><a class="menu-link" href="https://thedesserttablebybhoomika.com/">DessertTableByBhoomika</a></div>
         </div>
       </div>
@@ -157,6 +188,14 @@
     <div class="footer-actions"><a href="#top">Back to top</a></div>
     <p class="copyright">© <span data-current-year></span> The Dessert Table by Bhoomika</p>
   </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/919871116462?text=Hi%20Bhoomika!%20I%20was%20looking%20through%20The%20Dessert%20Table%20and%20would%20love%20to%20enquire%20about%20an%20order." target="_blank" rel="noopener noreferrer" aria-label="Enquire on WhatsApp" data-general-whatsapp data-whatsapp-float>
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z"/>
+      <path d="m8.1 7.5 1.5-.2 1 2.4-.9 1.1a8 8 0 0 0 2.7 2.7l1.1-.9 2.4 1-.2 1.5c-.2 1.2-1.5 1.5-2.6 1.2-3.4-1-5.4-3-6.4-6.4-.3-1.1 0-2.4 1.4-2.4Z"/>
+    </svg>
+    <span>Enquire on WhatsApp</span>
+  </a>
 
   <p class="sr-only" role="status" aria-live="polite" data-status></p>
 </body>

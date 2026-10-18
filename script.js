@@ -4,7 +4,35 @@
 // Use country code and digits only, without spaces or a plus sign.
 const WHATSAPP_NUMBER = "919871116462";
 const FALLBACK_IMAGE = "assets/images/products/product-placeholder.svg";
-const PRODUCT_IMAGE_VERSION = "20261005e";
+const PRODUCT_IMAGE_VERSION = "20261018c";
+
+// Attribution is intentionally first-name only. Confirm consent before publishing.
+const testimonials = [
+  {
+    headline: "Made a dessert lover out of me.",
+    quote: "The tiramisu is great. I'm not even a person with a sweet tooth, and I loved it. The right amount of sweet, and the flavour is amazing!",
+    name: "Ria",
+    featured: true
+  },
+  {
+    headline: "One bite, and the whole office was hooked.",
+    quote: "The tiramisu is so much better than what we usually order — we'll order only from you now. And the coffee walnut tea cake? The whole office has become a fan. Everyone wants more!",
+    name: "Athira",
+    featured: false
+  },
+  {
+    headline: "Every last spoonful, gone.",
+    quote: "Gone in minutes. You are totally spoiling us — not fair!",
+    name: "Akanksha",
+    featured: false
+  },
+  {
+    headline: "Dessert and breakfast, both perfect.",
+    quote: "It was so good — both kinds! I also loved the granola. Had it with dahi as a post-breakfast snack. Yum yum!",
+    name: "Debaroti",
+    featured: false
+  }
+];
 
 const categories = [
   { id: "signature-tea-cakes", name: "Signature Tea Cakes", note: "Slow afternoons and thoughtful gifts" },
@@ -278,7 +306,76 @@ function isWhatsAppConfigured() {
 }
 
 function whatsappUrl(message) {
-  return isWhatsAppConfigured() ? `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}` : "#contact";
+  return isWhatsAppConfigured() ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}` : "#contact";
+}
+
+function testimonialFigure(testimonial) {
+  const figure = document.createElement("figure");
+  figure.className = "testimonial";
+  const headline = document.createElement("h3");
+  headline.textContent = testimonial.headline;
+  const quote = document.createElement("blockquote");
+  const paragraph = document.createElement("p");
+  paragraph.textContent = testimonial.quote;
+  quote.append(paragraph);
+  const attribution = document.createElement("figcaption");
+  attribution.textContent = testimonial.name;
+  figure.append(headline, quote, attribution);
+  return figure;
+}
+
+function renderTestimonials() {
+  const grid = document.querySelector("[data-testimonial-grid]");
+  testimonials.forEach(testimonial => {
+    const figure = testimonialFigure(testimonial);
+    if (testimonial.featured) {
+      figure.classList.add("testimonial-featured");
+      document.querySelector("#signature-desserts").after(figure);
+    } else {
+      grid.append(figure);
+    }
+  });
+  document.querySelector("[data-testimonials]").hidden = false;
+}
+
+function setupTicker() {
+  const track = document.querySelector("[data-ticker-track]");
+  const duplicate = track.firstElementChild.cloneNode(true);
+  duplicate.setAttribute("aria-hidden", "true");
+  duplicate.classList.add("ticker-duplicate");
+  track.append(duplicate);
+  track.classList.add("is-animated");
+  const toggle = document.querySelector("[data-ticker-toggle]");
+  toggle.hidden = false;
+  toggle.addEventListener("click", () => {
+    const paused = toggle.getAttribute("aria-pressed") !== "true";
+    toggle.setAttribute("aria-pressed", String(paused));
+    toggle.setAttribute("aria-label", paused ? "Resume brand story movement" : "Pause brand story movement");
+    track.classList.toggle("is-paused", paused);
+  });
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+      track.classList.toggle("is-out-of-view", !entries[0].isIntersecting);
+    });
+    observer.observe(track.closest(".brand-ticker"));
+  }
+  const syncVisibility = () => track.classList.toggle("is-page-hidden", document.hidden);
+  document.addEventListener("visibilitychange", syncVisibility);
+  syncVisibility();
+}
+
+function setupWhatsAppHierarchy() {
+  if (!("IntersectionObserver" in window)) return;
+  const floatingLink = document.querySelector("[data-whatsapp-float]");
+  const observer = new IntersectionObserver(entries => {
+    floatingLink.classList.toggle("is-secondary", entries[0].isIntersecting);
+  });
+  observer.observe(document.querySelector("#contact"));
+}
+
+function productImageSrcset(image) {
+  const filename = image.split("/").pop().replace(/\.(jpg|png)$/i, "");
+  return [480, 768].map(width => `assets/images/products/optimized/${filename}-${width}.webp?v=${PRODUCT_IMAGE_VERSION} ${width}w`).join(", ");
 }
 
 function productCard(product, featured = false) {
@@ -304,7 +401,10 @@ function productCard(product, featured = false) {
     <article class="product-card${featured ? " featured-card" : ""}${product.available ? "" : " is-unavailable"}" data-product-id="${product.id}">
       <div class="product-image">
         ${displayBadge ? `<span class="badge" data-badge="${displayBadge}">${displayBadge}</span>` : ""}
-        <img src="${product.image}?v=${PRODUCT_IMAGE_VERSION}" data-fallback="${FALLBACK_IMAGE}" alt="${product.imageAlt}" width="800" height="800" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="${productImageSrcset(product.image)}" sizes="(min-width: 1280px) 395px, (min-width: 1024px) calc((100vw - 5rem) / 3), (min-width: 672px) calc((100vw - 4rem) / 2), calc(100vw - 2rem)">
+          <img src="${product.image}?v=${PRODUCT_IMAGE_VERSION}" data-fallback="${FALLBACK_IMAGE}" alt="${product.imageAlt}" width="800" height="800" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="product-body">
         <h4 class="product-title">${product.name}</h4>
@@ -341,6 +441,7 @@ function installImageFallbacks() {
   document.querySelectorAll("img[data-fallback]").forEach(image => {
     image.addEventListener("error", () => {
       if (image.src.endsWith(FALLBACK_IMAGE)) return;
+      image.closest("picture").querySelector("source").removeAttribute("srcset");
       image.src = image.dataset.fallback;
       image.closest(".product-card").classList.add("has-placeholder");
       image.alt = `${image.closest(".product-card").querySelector(".product-title").textContent}. Photo coming soon.`;
@@ -366,6 +467,7 @@ function setupProductVariants() {
       enquiry.setAttribute("aria-label", `Enquire on WhatsApp about ${product.name}, ${variant.label}, ${variant.size ?? product.size}, ${formatPrice(variant.price)}`);
       if (variant.image) {
         const image = card.querySelector(".product-image img");
+        card.querySelector(".product-image source").srcset = productImageSrcset(variant.image);
         image.src = `${variant.image}?v=${PRODUCT_IMAGE_VERSION}`;
         image.alt = variant.imageAlt ?? product.imageAlt;
         card.classList.remove("has-placeholder");
@@ -400,7 +502,8 @@ function setupAnchorScrolling() {
     const needsCategoryOffset = target.id === "menu" || target.classList.contains("menu-category");
     const offset = headerHeight + (needsCategoryOffset ? categoryNav.offsetHeight : 0) + 16;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? "instant" : "smooth" });
     history.replaceState(null, "", `#${target.id}`);
   }));
 }
@@ -417,7 +520,7 @@ function setupCategoryTracking() {
 }
 
 function setupActions() {
-  const generalMessage = "Hello Bhoomika, I would like to enquire about your dessert menu.";
+  const generalMessage = "Hi Bhoomika! I was looking through The Dessert Table and would love to enquire about an order.";
   document.querySelectorAll("[data-general-whatsapp]").forEach(link => {
     link.href = whatsappUrl(link.dataset.whatsappMessage || generalMessage);
     if (isWhatsAppConfigured()) {
@@ -429,10 +532,6 @@ function setupActions() {
     ? `WhatsApp: +${WHATSAPP_NUMBER}`
     : "WhatsApp number will be added soon.";
 
-  const menuUrl = window.location.protocol === "file:"
-    ? "https://thedesserttablebybhoomika.com/"
-    : window.location.href.split("#")[0];
-  document.querySelector("[data-site-qr]").src = `https://api.qrserver.com/v1/create-qr-code/?size=440x440&color=0b2847&bgcolor=fffaf4&data=${encodeURIComponent(menuUrl)}`;
 }
 
 function validateCatalog() {
@@ -443,6 +542,9 @@ function validateCatalog() {
 document.addEventListener("DOMContentLoaded", () => {
   validateCatalog();
   renderMenu();
+  renderTestimonials();
+  setupTicker();
+  setupWhatsAppHierarchy();
   setupProductVariants();
   setupNavigation();
   setupAnchorScrolling();

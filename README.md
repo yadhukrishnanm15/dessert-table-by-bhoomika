@@ -77,6 +77,54 @@ A commented future-product example is included below the live array.
 2. Use the same category `id` on its products.
 3. Add a matching link to the sticky category navigation in `index.html`.
 
+## Brand story and customer testimonials
+
+The brand story strip sits directly below the hero. Edit its seven phrases in
+`index.html`; JavaScript creates an accessibility-hidden duplicate for the
+seamless, continuous animation (60 seconds per sequence). The larger text is
+paired with decorative, gold SVG line icons, not emoji or clickable badges.
+The phrases include the owner-confirmed "Freshly baked" and "Premium ingredients"
+claims; "Baked to order" describes how orders are prepared. "Small-batch" was
+removed from the ticker only; the rest of the brand story is unchanged.
+Keep these non-urgent brand messages in the strip rather than an interruptive pop-up.
+Hover or keyboard focus pauses movement, and the pause button keeps it paused.
+Movement also pauses when the ticker is offscreen or the browser tab is hidden.
+Reduced-motion preferences show all seven phrases
+in a static, wrapping strip instead.
+
+All testimonial copy lives in the `testimonials` array near the top of
+`script.js`. To add another testimonial, append an object with `headline`,
+`quote`, `name`, and `featured: false`. It automatically appears in Kind Words.
+Use `featured: true` for a pull-quote after Signature Desserts instead; it is
+not repeated in Kind Words. Preserve the customer's wording verbatim.
+Attribution deliberately displays **first names only**, without areas or bake
+details. No customer locations or bake metadata are stored in this array.
+
+The floating WhatsApp link uses the same `WHATSAPP_NUMBER`, `whatsappUrl`
+helper, and default enquiry message as other general WhatsApp buttons.
+Product-specific messages and custom-order messages remain distinct.
+The floating control stays visible at Contact with a quieter ivory treatment.
+It is icon-only on phones and a labelled pill on larger screens.
+The stacked mobile testimonial column leaves space beside the floating icon.
+
+These enhancements reuse the existing navy/cream/gold tokens, Bodoni Moda
+and Manrope typography, `.section-shell`, `.section-label`, `.button`,
+`.button-secondary`, focus styles, breakpoints, and WhatsApp setup.
+Classic Tiramisu retains its existing `.badge` Customer Favorite treatment.
+Existing product content and photography are unchanged.
+
+### Before publishing testimonials
+
+This implementation is a local preview, not consent verification or a deployment.
+Confirm permission to publish each customer's first name and words, and confirm
+the spellings Ria, Athira, Akanksha, and Debaroti before publishing.
+
+The owner confirmed on 18 October 2026 that Chocolate Berry Dessert Tub and
+Homemade Granola were custom orders and are planned for the menu later.
+Their absence from the current menu is intentional, not a testimonial
+discrepancy. Keep the supplied quotations unchanged; add these products only
+when their menu details, prices, and availability are confirmed.
+
 ## Add real photographs
 
 Place each photograph in `assets/images/products/` using the exact filename:
@@ -98,6 +146,31 @@ chocolate-chip-tea-cake.jpg
 ```
 
 JavaScript replaces any missing image with `product-placeholder.svg`, so visitors never see a broken-image icon. Product photographs occupy a 4:3 responsive frame using `object-fit: cover`; no HTML or layout changes are required.
+
+### Loading performance
+
+Product photography uses responsive WebP copies in
+`assets/images/products/optimized/`, at 480px and 768px widths, with the original
+JPEG/PNG retained as a format fallback. The browser selects the appropriate
+size for the viewport and pixel density; photographs remain lazy-loaded and
+decode asynchronously. Variant selection updates both the WebP sources and
+original image. Missing optimized images use the existing placeholder.
+
+When replacing a photograph, also regenerate its two WebP copies, preserving
+the aspect ratio and using the original filename stem plus `-480.webp` and
+`-768.webp`. Export at quality 82 or comparable visual quality. Update
+`PRODUCT_IMAGE_VERSION` when changing photographs to refresh cached images.
+
+The same Allura, Bodoni Moda, and Manrope fonts are now served locally from
+`assets/fonts/` as Latin WOFF2 files with `font-display: swap`; Bodoni Moda
+retains its variable optical sizing and weight axes. The corresponding SIL
+Open Font License notices are included alongside them. There is no external
+Google Fonts stylesheet on the rendering path.
+
+The Contact QR code is a local, lazy-loaded image in `assets/icons/menu-qr.png`
+that always opens `https://thedesserttablebybhoomika.com/`, including from a
+local preview. Regenerate this asset if the public menu URL changes. No
+external QR-generation request is made when a visitor opens the site.
 
 Replace `assets/images/hero/hero-placeholder.svg` with a real hero file only after updating the image path in `index.html`. Keep the same 3:2 landscape ratio.
 
