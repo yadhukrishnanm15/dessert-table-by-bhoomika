@@ -65,10 +65,10 @@ const diwaliHampers = [
     enquiryName: "Diwali Parampara Signature Hamper",
     tagline: "Traditional Treats for Brighter Bonds",
     image: "assets/images/hampers/diwali-parampara.png",
-    imageAlt: "Diwali Parampara in a kraft gift box with fusion mithai, chocolate chip tea cake, cookie and crunch jars, and a small Diwali gift",
+    imageAlt: "Diwali Parampara in a kraft gift box with Chocolate Pista Barfi and Rose Dryfruit Ladoos, chocolate chip tea cake, cookie and crunch jars, and a small Diwali gift",
     inclusions: [
       "Chocolate Chip Butter Tea Cake",
-      "Fusion Mithai",
+      "Chocolate Pista Barfi & Rose Dryfruit Ladoos",
       "Rajgira Cookies",
       "Herb Millet & Peanut Crunch",
       "A small Diwali gift"
@@ -80,15 +80,14 @@ const diwaliHampers = [
     category: "Our Premium Hamper",
     enquiryName: "Diwali Utsav Premium Hamper",
     tagline: "Bigger Celebrations, Happier Together",
-    image: "assets/images/hampers/diwali-utsav.png",
-    imageAlt: "Diwali Utsav in a navy gift box with chocolate chip tea cake, cookie and crunch jars, festive sweets, and two Motichoor mini tea cakes",
+    image: "assets/images/hampers/diwali-utsav.png?v=20261029c",
+    imageAlt: "Diwali Utsav in a navy gift box with chocolate chip tea cake, cookie and crunch jars, Kunafa Dates and Rose Dryfruit Ladoos, and two Motichoor mini tea cakes",
     inclusions: [
       "Chocolate Chip Butter Tea Cake",
       "Herb Millet & Peanut Crunch",
       "Rajgira Cookies",
       "Kunafa Dates",
-      "Dry Fruit Laddus",
-      "Motichoor",
+      "Rose Dryfruit Ladoos",
       "Two Motichoor Mini Tea Cakes",
       "A special surprise Diwali gift"
     ]
