@@ -5,6 +5,8 @@
 const WHATSAPP_NUMBER = "919871116462";
 const FALLBACK_IMAGE = "assets/images/products/product-placeholder.svg";
 const PRODUCT_IMAGE_VERSION = "20261018c";
+// Set to false after the season to hide all Diwali content and navigation.
+const DIWALI_SEASON_ENABLED = true;
 
 // Attribution is intentionally first-name only. Confirm consent before publishing.
 const testimonials = [
@@ -38,6 +40,59 @@ const categories = [
   { id: "signature-tea-cakes", name: "Signature Tea Cakes", note: "Slow afternoons and thoughtful gifts" },
   { id: "signature-desserts", name: "Signature Desserts", note: "Layered, chilled and deeply comforting" },
   { id: "cupcake-collection", name: "Cupcake Collection", note: "Made for sharing, gifting and dessert tables" }
+];
+
+const diwaliHampers = [
+  {
+    id: "diwali-mithaas",
+    name: "Diwali Mithaas",
+    category: "Our Classic Hamper",
+    enquiryName: "Diwali Mithaas Classic Hamper",
+    tagline: "Chhoti Chhoti Khushiyan, Badi Roshniyan",
+    image: "assets/images/hampers/diwali-mithaas.png",
+    imageAlt: "Diwali Mithaas in a white gift box with chocolate chip tea cake, cookie and crunch jars, and a small Diwali gift",
+    inclusions: [
+      "Chocolate Chip Butter Tea Cake",
+      "Rajgira Cookies",
+      "Herb Millet & Peanut Crunch",
+      "A small Diwali gift"
+    ]
+  },
+  {
+    id: "diwali-parampara",
+    name: "Diwali Parampara",
+    category: "Our Signature Hamper",
+    enquiryName: "Diwali Parampara Signature Hamper",
+    tagline: "Traditional Treats for Brighter Bonds",
+    image: "assets/images/hampers/diwali-parampara.png",
+    imageAlt: "Diwali Parampara in a kraft gift box with fusion mithai, chocolate chip tea cake, cookie and crunch jars, and a small Diwali gift",
+    inclusions: [
+      "Chocolate Chip Butter Tea Cake",
+      "Fusion Mithai",
+      "Rajgira Cookies",
+      "Herb Millet & Peanut Crunch",
+      "A small Diwali gift"
+    ]
+  },
+  {
+    id: "diwali-utsav",
+    name: "Diwali Utsav",
+    category: "Our Premium Hamper",
+    enquiryName: "Diwali Utsav Premium Hamper",
+    tagline: "Bigger Celebrations, Happier Together",
+    image: "assets/images/hampers/diwali-utsav.png",
+    imageAlt: "Diwali Utsav in a navy gift box with chocolate chip tea cake, cookie and crunch jars, festive sweets, and two Motichoor mini tea cakes",
+    inclusions: [
+      "Chocolate Chip Butter Tea Cake",
+      "Herb Millet & Peanut Crunch",
+      "Rajgira Cookies",
+      "Kunafa Dates",
+      "Dry Fruit Laddus",
+      "Motichoor",
+      "Two Motichoor Mini Tea Cakes",
+      "A special surprise Diwali gift"
+    ]
+  }
 ];
 
 // PRODUCT EDITING GUIDE
@@ -437,6 +492,28 @@ function renderMenu() {
   installImageFallbacks();
 }
 
+function setupDiwaliSeason() {
+  document.querySelectorAll("[data-diwali-season]").forEach(element => {
+    element.hidden = !DIWALI_SEASON_ENABLED;
+  });
+  if (DIWALI_SEASON_ENABLED) renderDiwaliHampers();
+}
+
+function renderDiwaliHampers() {
+  document.querySelector("[data-hamper-grid]").innerHTML = diwaliHampers.map(hamper => `
+    <article class="hamper-card" aria-labelledby="${hamper.id}-title">
+      <img class="hamper-image" src="${hamper.image}" alt="${hamper.imageAlt}" width="768" height="768" loading="lazy" decoding="async">
+      <div class="hamper-body">
+        <h3 id="${hamper.id}-title">${hamper.name}</h3>
+        <p class="hamper-category">${hamper.category}</p>
+        <p class="hamper-tagline">${hamper.tagline}</p>
+        <h4>What's inside</h4>
+        <ul>${hamper.inclusions.map(item => `<li>${item}</li>`).join("")}</ul>
+        <a class="button" href="#contact" data-general-whatsapp data-whatsapp-message="Hi Bhoomika! I'm interested in the ${hamper.enquiryName}. Please share the price and availability." aria-label="Enquire on WhatsApp about ${hamper.name}">Enquire on WhatsApp</a>
+      </div>
+    </article>`).join("");
+}
+
 function installImageFallbacks() {
   document.querySelectorAll("img[data-fallback]").forEach(image => {
     image.addEventListener("error", () => {
@@ -499,7 +576,7 @@ function setupAnchorScrolling() {
     event.preventDefault();
     const headerHeight = document.querySelector("[data-header]").offsetHeight;
     const categoryNav = document.querySelector("[data-category-nav]");
-    const needsCategoryOffset = target.id === "menu" || target.classList.contains("menu-category");
+    const needsCategoryOffset = target.id === "menu" || target.id === "diwali-hampers" || target.classList.contains("menu-category");
     const offset = headerHeight + (needsCategoryOffset ? categoryNav.offsetHeight : 0) + 16;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -516,7 +593,7 @@ function setupCategoryTracking() {
     if (!visible) return;
     links.forEach(link => link.setAttribute("aria-current", String(link.getAttribute("href") === `#${visible.target.id}`)));
   }, { rootMargin: "-35% 0px -55%", threshold: [0, .15, .5] });
-  document.querySelectorAll(".menu-category").forEach(section => observer.observe(section));
+  document.querySelectorAll(".menu-category, #diwali-hampers:not([hidden])").forEach(section => observer.observe(section));
 }
 
 function setupActions() {
@@ -542,6 +619,7 @@ function validateCatalog() {
 document.addEventListener("DOMContentLoaded", () => {
   validateCatalog();
   renderMenu();
+  setupDiwaliSeason();
   renderTestimonials();
   setupTicker();
   setupWhatsAppHierarchy();

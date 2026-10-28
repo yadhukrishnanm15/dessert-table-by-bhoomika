@@ -77,6 +77,39 @@ A commented future-product example is included below the live array.
 2. Use the same category `id` on its products.
 3. Add a matching link to the sticky category navigation in `index.html`.
 
+## Diwali hampers
+
+The dedicated Diwali Hampers section appears directly after the menu. A
+non-sticky, fully clickable seasonal banner below the header and above the
+hero links directly to it, alongside a temporary sticky browse link.
+The primary navigation stays evergreen.
+
+Set `DIWALI_SEASON_ENABLED` near the top of `script.js` to `false` after the
+season. This hides the banner, browse link, and entire hamper section
+(including customisation) together and skips rendering the hamper cards
+and loading their photographs. Set it back to `true` for the next season
+after updating the content. There is no automatic expiry date. Seasonal
+content stays hidden until JavaScript enables it, avoiding a flash of
+out-of-season content or seasonal navigation without working cards.
+
+Edit the `diwaliHampers` array in `script.js` to update names, categories,
+taglines, inclusions, image descriptions, and enquiry names. These three
+hampers are separate from the 12-item priced menu; no hamper prices or
+availability claims are displayed.
+
+The supplied photographs are stored in `assets/images/hampers/`:
+`diwali-mithaas.png` (white box), `diwali-parampara.png` (kraft box), and
+`diwali-utsav.png` (navy box). Keep replacement photographs square; the
+layout displays the full image without cropping, reserves its dimensions,
+and lazy-loads it. Cards stack on phones, use two columns on tablets, and
+three columns on desktop.
+
+Each card uses `data-general-whatsapp` and a hamper-specific
+`data-whatsapp-message`, so the existing `setupActions()` and
+`WHATSAPP_NUMBER` remain the single enquiry configuration.
+The customisation copy and message are in `index.html` under
+`hamper-customisation`. Enquiries ask for prices and availability directly.
+
 ## Brand story and customer testimonials
 
 The brand story strip sits directly below the hero. Edit its seven phrases in
